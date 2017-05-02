@@ -9,10 +9,8 @@
   <div class="nav-wrapper teal lighten-1 ">
     <a href="#!" class="brand-logo center"><i class="fa fa-book"></i>Recelibro</a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="">Recetas</a></li>
-      <li><a href="">Lista de la compra</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opciones<i class="fa fa-caret-down right"></i></a></li>
+      <li><a href="#" (click)="onSelect('recetas')" >Recetas</a></li>
+      <li><a href="#" (click)="onSelect('lista-de-la-compra')">Lista de la compra</a></li>
     </ul>
   </div>
 </nav>

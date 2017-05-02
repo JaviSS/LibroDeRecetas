@@ -1,3 +1,30 @@
-<p>
-  detalle-de-receta works!
-</p>
+<div class="row">
+  <div class="col s12 m12 l12 xl12">
+    <img [src]="receta.rutaImagen" alt="{{receta.nombre}}" class="responsive-img">
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 xl12">
+    <h3>{{receta.nombre}}</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 l12">
+    <a class="waves-effect waves-light btn">Gestionar recetas</a>
+    <ul>
+      <li><a href="">Añadir a la lista</a></li>
+      <li><a href="">Editar receta</a></li>
+      <li><a href="">Eliminar receta</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 xl12">
+    {{ receta.descripcion}}
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12 l12 xl12">
+    Ingredientes
+  </div>
+</div>

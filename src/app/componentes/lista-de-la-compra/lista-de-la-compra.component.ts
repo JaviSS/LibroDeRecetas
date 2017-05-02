@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Ingrediente} from "../../compartido/ingrediente.model";
 
 @Component({
   selector: 'app-lista-de-la-compra',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaDeLaCompraComponent implements OnInit {
 
-  constructor() { }
+  ingredientes: Ingrediente[] = [
+    new Ingrediente('Manzanas', 5),
+    new Ingrediente('Tomates', 10)
+  ];
+
+  insertarIngrediente(ingrediente: Ingrediente){
+    this.ingredientes.push(ingrediente);
+  }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
-<app-cabecera></app-cabecera>
+<app-cabecera (featureSelected)="onNavigate($event)"></app-cabecera>
 <div class="row">
   <div class="col s12 m12 l12">
-    <app-recetas></app-recetas>
-    <app-lista-de-la-compra></app-lista-de-la-compra>
+    <app-recetas *ngIf="featureSelected === 'recetas'"></app-recetas>
+    <app-lista-de-la-compra *ngIf="featureSelected !== 'recetas'"></app-lista-de-la-compra>
   </div>
 </div>
