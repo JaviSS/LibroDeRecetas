@@ -11,6 +11,7 @@ import { DetalleDeRecetaComponent } from './componentes/recetas/detalle-de-recet
 import { ListaDeLaCompraComponent } from './componentes/lista-de-la-compra/lista-de-la-compra.component';
 import { EditarListaDeLaCompraComponent } from './componentes/lista-de-la-compra/editar-lista-de-la-compra/editar-lista-de-la-compra.component';
 import { RecetaComponent } from './componentes/recetas/lista-de-recetas/receta/receta.component';
+import {DropdownDirectiva} from "./compartido/dropdown.directiva";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecetaComponent } from './componentes/recetas/lista-de-recetas/receta/r
     DetalleDeRecetaComponent,
     ListaDeLaCompraComponent,
     EditarListaDeLaCompraComponent,
-    RecetaComponent
+    RecetaComponent,
+    DropdownDirectiva
   ],
   imports: [
     BrowserModule,
