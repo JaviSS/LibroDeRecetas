@@ -4,14 +4,10 @@
 </div>
 <div class="row">
   <div class="col s12 m12 l12 xl12">
-    <a class="waves-effect waves-teal btn"><i class="fa fa-pencil"></i> Nueva receta</a>
-    <hr>
-    <div class="collection">
-      <div class="collection-item row">
-        <app-receta
-          *ngFor="let recetaElemento of recetas"
-          [receta]="recetaElemento"
-          (recetaSeleccionadaEvento)="onRecetaSeleccionada(recetaElemento)"></app-receta>
+    <a class="waves-effect deep-purple lighten-2 btn botonNuevaReceta"><i class="fa fa-pencil"></i> Nueva receta</a>
+    <div class="collection z-depth-2">
+      <div *ngFor="let recetaElemento of recetas" class="collection-item row hoverable recetaElemento">
+        <app-receta [receta]="recetaElemento"></app-receta>
       </div>
     </div>
   </div>

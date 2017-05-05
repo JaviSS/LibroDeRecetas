@@ -12,6 +12,7 @@ import { ListaDeLaCompraComponent } from './componentes/lista-de-la-compra/lista
 import { EditarListaDeLaCompraComponent } from './componentes/lista-de-la-compra/editar-lista-de-la-compra/editar-lista-de-la-compra.component';
 import { RecetaComponent } from './componentes/recetas/lista-de-recetas/receta/receta.component';
 import {DropdownDirectiva} from "./compartido/dropdown.directiva";
+import {ListaDeLaCompraServicio} from "./servicios/lista-de-la-compra.servicio";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {DropdownDirectiva} from "./compartido/dropdown.directiva";
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ListaDeLaCompraServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
-<a href="#" (click)="recetaSeleccionada()"><div class="col s4 m4 l4 xl4 imagenContenedor">
+<div (click)="recetaSeleccionada()"><div class="col s4 m4 l4 xl4 imagenContenedor">
   <img [src]="receta.rutaImagen" [alt]="receta.descripcion" class="responsive-img">
   <br>
 </div>
 <div class="col s8 m8 l8 xl8">
-  <div class="row">{{receta.nombre}}</div>
-  <div class="row">{{receta.descripcion}}</div>
+  <div class="row nombreReceta">{{receta.nombre}}</div>
+  <div class="row descripcionReceta">{{receta.descripcion}}</div>
 </div>
-</a>
+</div>

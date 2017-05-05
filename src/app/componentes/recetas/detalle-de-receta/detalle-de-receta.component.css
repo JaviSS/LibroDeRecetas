@@ -1,0 +1,22 @@
+.contendorImagen{
+  margin: 15px 0px;
+}
+
+.collection{
+  border: 0px;
+
+}
+
+.collection-item{
+  background-color: #484747;
+}
+
+a.collection-item{
+  color: #dcd9d9;
+  border-bottom: 1px solid #c7afe0;
+}
+
+
+.collection-item:hover{
+background-color: #7f7e7e;
+}

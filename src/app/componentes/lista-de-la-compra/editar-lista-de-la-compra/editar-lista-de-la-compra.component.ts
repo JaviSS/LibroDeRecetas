@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Ingrediente} from "../../../compartido/ingrediente.model";
+import {ListaDeLaCompraServicio} from "../../../servicios/lista-de-la-compra.servicio";
 
 @Component({
   selector: 'app-editar-lista-de-la-compra',
@@ -10,9 +11,8 @@ export class EditarListaDeLaCompraComponent implements OnInit {
 
   @ViewChild('nombreInput') nombreInput: ElementRef;
   @ViewChild('cantidadInput') cantidadInput: ElementRef;
-  @Output() nuevoIngredienteEvento = new EventEmitter<Ingrediente>();
 
-  constructor() {
+  constructor(private _listaDeLaCompraServicio: ListaDeLaCompraServicio) {
   }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class EditarListaDeLaCompraComponent implements OnInit {
       this.nombreInput.nativeElement.value,
       this.cantidadInput.nativeElement.value
     );
-    this.nuevoIngredienteEvento.emit(ingrediente);
+    this._listaDeLaCompraServicio.insertarIngrediente(ingrediente);
   }
 
 

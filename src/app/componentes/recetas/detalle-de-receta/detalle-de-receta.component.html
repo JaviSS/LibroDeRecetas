@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row contendorImagen">
   <div class="col s12 m12 l12 xl12">
     <img [src]="receta.rutaImagen" alt="{{receta.nombre}}" class="responsive-img">
   </div>
@@ -10,26 +10,10 @@
 </div>
 <div class="row">
   <div class="col s12 m12 l12 l12">
-    <a class="waves-effect waves-light btn">Gestionar recetas</a>
-
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-
-    <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
-      <li><a href="#!">one</a></li>
-      <li><a href="#!">two</a></li>
-      <li class="divider"></li>
-      <li><a href="#!">three</a></li>
-      <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-      <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-    </ul>
-
-    <ul>
-      <li><a href="">Añadir a la lista</a></li>
-      <li><a href="">Editar receta</a></li>
-      <li><a href="">Eliminar receta</a></li>
-    </ul>
+      <a class="waves-effect deep-purple lighten-2 btn"
+      (click)="insertarIngredientesEnLaListaDeLaCompra()">Añadir a la lista</a>
+      <a href="" class="waves-effect deep-purple lighten-2 btn">Editar receta</a>
+      <a href="" class="waves-effect red lighten-2 btn">Eliminar receta</a>
   </div>
 </div>
 <div class="row">
@@ -39,6 +23,11 @@
 </div>
 <div class="row">
   <div class="col s12 m12 l12 xl12">
-    Ingredientes
+    <ul class="collection">
+      <a class="collection-item" *ngFor="let ingrediente of receta.ingredientes">
+        {{ingrediente.nombre}} - ({{ingrediente.cantidad}})
+      </a>
+    </ul>
+
   </div>
 </div>

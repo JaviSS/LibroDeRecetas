@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Ingrediente} from "../../compartido/ingrediente.model";
+import {ListaDeLaCompraServicio} from "../../servicios/lista-de-la-compra.servicio";
 
 @Component({
   selector: 'app-lista-de-la-compra',
@@ -8,19 +9,16 @@ import {Ingrediente} from "../../compartido/ingrediente.model";
 })
 export class ListaDeLaCompraComponent implements OnInit {
 
-  ingredientes: Ingrediente[] = [
-    new Ingrediente('Manzanas', 5),
-    new Ingrediente('Tomates', 10)
-  ];
+  ingredientes: Ingrediente[];
 
-  insertarIngrediente(ingrediente: Ingrediente){
-    this.ingredientes.push(ingrediente);
-  }
-
-  constructor() {
+  constructor(private _listaDeLaCompraServicio: ListaDeLaCompraServicio) {
   }
 
   ngOnInit() {
+    this.ingredientes = this._listaDeLaCompraServicio.getIngredientes();
+    this._listaDeLaCompraServicio.cambioEnIngredientes.subscribe(
+      (ingredientes:Ingrediente[]) => this.ingredientes = ingredientes
+    );
   }
 
 }

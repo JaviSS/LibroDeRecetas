@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row recetasContenedor">
   <div class="col s5 m5 l5 xl5">
-    <app-lista-de-recetas (recetaEvento)="recetaSeleccionada = $event"></app-lista-de-recetas>
+    <app-lista-de-recetas></app-lista-de-recetas>
   </div>
-  <div class="col s7 m7 l7 xl7">
+  <div class="col s7 m7 l7 xl7 detalleDeRecetaContenedor z-depth-1">
     <app-detalle-de-receta *ngIf="recetaSeleccionada; else textoInfo" [receta]="recetaSeleccionada"></app-detalle-de-receta>
     <ng-template #textoInfo><p>Selecciona una receta</p></ng-template>
   </div>

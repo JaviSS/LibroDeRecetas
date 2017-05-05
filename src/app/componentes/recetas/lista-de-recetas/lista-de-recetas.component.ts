@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {Receta} from "../../receta.model";
+import {RecetaServicio} from "../../../servicios/receta.servicio";
 
 @Component({
   selector: 'app-lista-de-recetas',
@@ -7,29 +8,13 @@ import {Receta} from "../../receta.model";
   styleUrls: ['./lista-de-recetas.component.css']
 })
 export class ListaDeRecetasComponent implements OnInit {
+  recetas: Receta[];
 
-  @Output() recetaEvento = new EventEmitter<Receta>();
-
-  recetas: Receta[] = [
-    new Receta('Receta de prueba',
-      'lalsldallsakdm lkamd lkasmdlkasm lkdj jsdk jasjkd asjkd asjk daskj dakjsd kjas dajks dakjs dakjhjkda dalkdñl akdñalasm dlkasm dalksdm alsk dmakl dmalk damaslkdadladl ',
-      'https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201702/x_tdy_ov_food_perfectfriedegg_170207.today-inline-vid-featured-desktop.jpg'),
-    new Receta('Receta de prueba2',
-      'lalsldallsakdm lkamd lkasmdlkasm lkdj jsdk jasjkd asjkd asjk daskj dakjsd kjas dajks dakjs dakjhjkda dalkdñl akdñalasm dlkasm dalksdm alsk dmakl dmalk damaslkdadladl ',
-      'https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201702/x_tdy_ov_food_perfectfriedegg_170207.today-inline-vid-featured-desktop.jpg'),
-    new Receta('Receta de prueb3',
-      'lalsldallsakdm lkamd lkasmdlkasm lkdj jsdk jasjkd asjkd asjk daskj dakjsd kjas dajks dakjs dakjhjkda dalkdñl akdñalasm dlkasm dalksdm alsk dmakl dmalk damaslkdadladl ',
-      'https://media3.s-nbcnews.com/j/MSNBC/Components/Video/201702/x_tdy_ov_food_perfectfriedegg_170207.today-inline-vid-featured-desktop.jpg'),
-  ];
-
-  constructor() {
+  constructor(private _recetaServicio: RecetaServicio) {
   }
 
   ngOnInit() {
-  }
-
-  onRecetaSeleccionada(receta: Receta){
-    this.recetaEvento.emit(receta);
+    this.recetas = this._recetaServicio.getRecetas();
   }
 
 }
