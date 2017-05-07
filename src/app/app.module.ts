@@ -13,6 +13,9 @@ import { EditarListaDeLaCompraComponent } from './componentes/lista-de-la-compra
 import { RecetaComponent } from './componentes/recetas/lista-de-recetas/receta/receta.component';
 import {DropdownDirectiva} from "./compartido/dropdown.directiva";
 import {ListaDeLaCompraServicio} from "./servicios/lista-de-la-compra.servicio";
+import {AppRutasModule} from "./app-rutas.module";
+import { RecetaVaciaComponent } from './componentes/recetas/receta-vacia/receta-vacia.component';
+import { EditarRecetaComponent } from './componentes/recetas/editar-receta/editar-receta.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,15 @@ import {ListaDeLaCompraServicio} from "./servicios/lista-de-la-compra.servicio";
     ListaDeLaCompraComponent,
     EditarListaDeLaCompraComponent,
     RecetaComponent,
-    DropdownDirectiva
+    DropdownDirectiva,
+    RecetaVaciaComponent,
+    EditarRecetaComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRutasModule
   ],
   providers: [ListaDeLaCompraServicio],
   bootstrap: [AppComponent]

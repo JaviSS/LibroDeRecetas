@@ -1,9 +1,10 @@
-<div (click)="recetaSeleccionada()"><div class="col s4 m4 l4 xl4 imagenContenedor">
-  <img [src]="receta.rutaImagen" [alt]="receta.descripcion" class="responsive-img">
-  <br>
-</div>
-<div class="col s8 m8 l8 xl8">
-  <div class="row nombreReceta">{{receta.nombre}}</div>
-  <div class="row descripcionReceta">{{receta.descripcion}}</div>
-</div>
+<div [routerLink]="[idReceta]" routerLinkActive="recetaElementoActivo" class="recetaElemento row">
+  <div class="col s4 m4 l4 xl4 imagenContenedor">
+    <img [src]="receta.rutaImagen" [alt]="receta.descripcion" class="responsive-img">
+    <br>
+  </div>
+  <div class="col s8 m8 l8 xl8">
+    <div class="row nombreReceta">{{receta.nombre}}</div>
+    <div class="row descripcionReceta">{{receta.descripcion}}</div>
+  </div>
 </div>

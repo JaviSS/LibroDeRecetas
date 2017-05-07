@@ -1,5 +1,38 @@
+.row{
+  margin: 0;
+}
+
 .nombreReceta{
   font-size: 20px;
   padding: 5px;
   text-align: center;
+}
+
+
+:focus {
+  outline-style: none;
+}
+
+
+.recetaElemento{
+  border: 0px;
+  background-color: #484747;
+  color: #dcd9d9;
+  transition-delay: 0s;
+  transition-duration: 0.35s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+
+.recetaElemento:hover{
+  background-color: #7f7e7e;
+
+}
+
+.recetaElementoActivo{
+  background-color: #9575cd;
+}
+
+.recetaElementoActivo:hover{
+  background-color: #67508d;
 }

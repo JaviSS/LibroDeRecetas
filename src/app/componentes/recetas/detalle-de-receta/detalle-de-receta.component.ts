@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Receta} from "../../receta.model";
-import {ListaDeLaCompraServicio} from "../../../servicios/lista-de-la-compra.servicio";
 import {RecetaServicio} from "../../../servicios/receta.servicio";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-detalle-de-receta',
@@ -9,13 +9,20 @@ import {RecetaServicio} from "../../../servicios/receta.servicio";
   styleUrls: ['./detalle-de-receta.component.css']
 })
 export class DetalleDeRecetaComponent implements OnInit {
+  receta: Receta;
+  idReceta:number;
 
-  @Input() receta: Receta;
-
-  constructor(private _recetaServicio: RecetaServicio) {
+  constructor(private _recetaServicio: RecetaServicio, private actualRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.receta = this._recetaServicio.getRecetaPorId(+this.actualRoute.snapshot.params['id']);
+    this.actualRoute.params.subscribe(
+      (params:Params) => {
+        this.idReceta = +params['id'];
+        this.receta = this._recetaServicio.getRecetaPorId(this.idReceta);
+      }
+    );
   }
 
   insertarIngredientesEnLaListaDeLaCompra() {
