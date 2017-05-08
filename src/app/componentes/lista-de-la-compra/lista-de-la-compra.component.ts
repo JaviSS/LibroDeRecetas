@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Ingrediente} from "../../compartido/ingrediente.model";
 import {ListaDeLaCompraServicio} from "../../servicios/lista-de-la-compra.servicio";
 
@@ -7,7 +7,7 @@ import {ListaDeLaCompraServicio} from "../../servicios/lista-de-la-compra.servic
   templateUrl: './lista-de-la-compra.component.html',
   styleUrls: ['./lista-de-la-compra.component.css']
 })
-export class ListaDeLaCompraComponent implements OnInit {
+export class ListaDeLaCompraComponent implements OnInit,OnDestroy {
 
   ingredientes: Ingrediente[];
 
@@ -21,4 +21,8 @@ export class ListaDeLaCompraComponent implements OnInit {
     );
   }
 
+
+  ngOnDestroy(): void {
+    this._listaDeLaCompraServicio.cambioEnIngredientes.unsubscribe();
+  }
 }

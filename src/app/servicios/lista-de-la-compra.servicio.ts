@@ -1,26 +1,26 @@
 import {Ingrediente} from "../compartido/ingrediente.model";
-import {EventEmitter} from "@angular/core";
-export class ListaDeLaCompraServicio{
+import {Subject} from "rxjs/Subject";
+export class ListaDeLaCompraServicio {
 
-  cambioEnIngredientes = new EventEmitter<Ingrediente[]>();
+  cambioEnIngredientes = new Subject<Ingrediente[]>();
 
   ingredientes: Ingrediente[] = [
     new Ingrediente('Manzanas', 5),
     new Ingrediente('Tomates', 10)
   ];
 
-  insertarIngrediente(ingrediente: Ingrediente){
+  insertarIngrediente(ingrediente: Ingrediente) {
     this.ingredientes.push(ingrediente);
-    this.cambioEnIngredientes.emit(this.ingredientes.slice());
+    this.cambioEnIngredientes.next(this.ingredientes.slice());
   }
 
-  insertarIngredientes(ingredientes: Ingrediente[]){
+  insertarIngredientes(ingredientes: Ingrediente[]) {
     this.ingredientes.push(...ingredientes);
-    this.cambioEnIngredientes.emit(this.ingredientes.slice());
+    this.cambioEnIngredientes.next(this.ingredientes.slice());
   }
 
 
-  getIngredientes(){
+  getIngredientes() {
     return this.ingredientes.slice();
   }
 

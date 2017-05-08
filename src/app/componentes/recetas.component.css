@@ -1,10 +1,8 @@
 .detalleDeRecetaContenedor{
-
   margin: 10px 0px;
   background-color: #484747;
-
 }
 
 .recetasContenedor{
-  background-color: #7d7c7c;
+  padding:10px;
 }

@@ -1,12 +1,13 @@
 import {Receta} from "../componentes/receta.model";
-import {EventEmitter, Injectable} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {ListaDeLaCompraServicio} from "./lista-de-la-compra.servicio";
 import {Ingrediente} from "../compartido/ingrediente.model";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class RecetaServicio {
 
-  recetaSeleccionada = new EventEmitter<Receta>();
+  recetaSeleccionada = new Subject;
 
   recetas: Receta[] = [
     new Receta('Hamburguesa de avestruz',
