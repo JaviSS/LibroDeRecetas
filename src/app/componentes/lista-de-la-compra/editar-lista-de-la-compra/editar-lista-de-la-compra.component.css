@@ -1,0 +1,35 @@
+input{
+  background-color: #5d5b5b;
+  margin:14px 0px 0px 0px;
+  border-radius: 1px;
+  padding: 0px 5px;
+}
+
+.botonInsertarIngrediente{
+  margin:13px 0px 0px 0px;
+  color: #d3d0d0;
+  background-color: #9575cd;
+
+
+}
+
+.botonInsertarIngrediente:hover{
+  margin:13px 0px 0px 0px;
+  color: #5d5b5b;
+  background-color: #d3c6f3;
+
+}
+input[type=number]:focus:not([readonly]),input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #b39ddb;
+  box-shadow: 0 1px 0 0 #b39ddb;
+}
+
+.row{
+  margin-bottom: 5px;
+}
+
+.row.separador{
+  margin-bottom: 40px;
+
+}
+

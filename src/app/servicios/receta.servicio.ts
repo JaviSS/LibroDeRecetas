@@ -7,7 +7,7 @@ import {Subject} from "rxjs/Subject";
 @Injectable()
 export class RecetaServicio {
 
-  recetaSeleccionada = new Subject;
+  recetasActualizadas = new Subject<Receta[]>();
 
   recetas: Receta[] = [
     new Receta('Hamburguesa de avestruz',
@@ -38,6 +38,17 @@ export class RecetaServicio {
 
   insertarIngredientesEnLaListaDeLaCompra(ingredientes: Ingrediente[]) {
     this._listaDeLaCompraService.insertarIngredientes(ingredientes);
+  }
+
+  insertarReceta(receta:Receta){
+    this.recetas.push(receta);
+    this.recetasActualizadas.next(this.recetas.slice());
+  }
+
+  actualizarReceta(id:number,receta:Receta){
+    this.recetas[id] = receta;
+    this.recetasActualizadas.next(this.recetas.slice());
+    console.log(this.recetas);
   }
 
 

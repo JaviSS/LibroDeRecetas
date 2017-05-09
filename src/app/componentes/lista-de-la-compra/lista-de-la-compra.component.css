@@ -1,0 +1,77 @@
+.nombreIngrediente {
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
+}
+
+.botonEditarIngrediente {
+  background-color: #b39ddb;
+  color: #484747;
+  height: 35px;
+  width: 35px;
+  transition-duration: 0.35s;
+  margin: 0px 5px;
+}
+
+.botonEditarIngrediente:hover {
+  background-color: #484747;
+  color: #dcd9d9;
+}
+
+
+.botonElminarIngrediente {
+  background-color: #db7376;
+  color: #484747;
+  height: 35px;
+  width: 35px;
+  transition-duration: 0.35s;
+  margin: 0px 5px;
+}
+
+.botonElminarIngrediente:hover {
+  background-color: #484747;
+  color: #dcd9d9;
+}
+
+
+.collection {
+  border: 0;
+}
+
+.collection-item {
+  border: 0;
+  line-height: 2.2em;
+  font-size: 18px;
+}
+
+.cantidadIngrediente {
+  color: #b4a0da;
+
+}
+
+:focus {
+  outline-style: none;
+}
+
+.ingredienteElemento {
+  border: 0px;
+  background-color: #484747;
+  color: #dcd9d9;
+  transition-delay: 0s;
+  transition-duration: 0.35s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+
+.ingredienteElemento:hover {
+  background-color: #676666;
+
+}
+
+.ingredienteElementoActivo {
+  background-color: #9575cd;
+}
+
+.ingredienteElementoActivo:hover {
+  background-color: #67508d;
+}

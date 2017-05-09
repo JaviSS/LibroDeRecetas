@@ -1,31 +1,60 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {Ingrediente} from "../../../compartido/ingrediente.model";
 import {ListaDeLaCompraServicio} from "../../../servicios/lista-de-la-compra.servicio";
+import {NgForm} from "@angular/forms";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-editar-lista-de-la-compra',
   templateUrl: './editar-lista-de-la-compra.component.html',
   styleUrls: ['./editar-lista-de-la-compra.component.css']
 })
-export class EditarListaDeLaCompraComponent implements OnInit {
+export class EditarListaDeLaCompraComponent implements OnInit, OnDestroy {
 
-  @ViewChild('nombreInput') nombreInput: ElementRef;
-  @ViewChild('cantidadInput') cantidadInput: ElementRef;
+  subscipcionEditarIngrediente: Subscription;
+  modoEditar: boolean = false;
+  idIngrediente: number;
+  ingredienteAeditar: Ingrediente;
+
+  @ViewChild('ingredienteForm') if: NgForm;
 
   constructor(private _listaDeLaCompraServicio: ListaDeLaCompraServicio) {
   }
 
   ngOnInit() {
-  }
-
-  nuevoIngrediente() {
-    const ingrediente = new Ingrediente(
-      this.nombreInput.nativeElement.value,
-      this.cantidadInput.nativeElement.value
+    this.subscipcionEditarIngrediente = this._listaDeLaCompraServicio.editarIngrediente.subscribe(
+      (id: number) => {
+        this.modoEditar = true;
+        this.idIngrediente = id;
+        this.ingredienteAeditar = this._listaDeLaCompraServicio.getIngredientePorId(id);
+        this.if.setValue({
+          nombreIngrediente: this.ingredienteAeditar.nombre,
+          cantidad: this.ingredienteAeditar.cantidad
+        });
+      }
     );
-    this._listaDeLaCompraServicio.insertarIngrediente(ingrediente);
+  }
+
+  nuevoIngrediente(formularioIngrediente: NgForm) {
+    const ingrediente = new Ingrediente(
+      formularioIngrediente.value.nombreIngrediente,
+      formularioIngrediente.value.cantidad
+    );
+    if (this.modoEditar) {
+      this._listaDeLaCompraServicio.actualizarIngrediente(this.idIngrediente, ingrediente);
+    } else {
+      this._listaDeLaCompraServicio.insertarIngrediente(ingrediente);
+    }
+    this.if.resetForm();
+    this.modoEditar = false;
   }
 
 
+
+  ngOnDestroy(): void {
+
+    this.subscipcionEditarIngrediente.unsubscribe();
+
+  }
 
 }

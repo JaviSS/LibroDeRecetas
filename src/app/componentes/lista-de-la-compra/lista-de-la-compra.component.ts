@@ -25,4 +25,14 @@ export class ListaDeLaCompraComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     this._listaDeLaCompraServicio.cambioEnIngredientes.unsubscribe();
   }
+
+  onEditar(id:number){
+    this._listaDeLaCompraServicio.editarIngrediente.next(id);
+  }
+
+  onEliminar(id:number){
+    this._listaDeLaCompraServicio.eliminarIngrediente(id);
+
+  }
+
 }

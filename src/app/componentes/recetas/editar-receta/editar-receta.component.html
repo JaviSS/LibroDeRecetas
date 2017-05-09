@@ -1,3 +1,70 @@
-<p>
-  editar-receta works!
-</p>
+<div class="row">
+  <div class="col x12 m12 l12 xl12">
+    <form [formGroup]="formularioReceta" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <label for="imagenURL">URL de la imagen</label>
+          <input id="imagenURL" type="text" formControlName="rutaImagen">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <img src="https://i.ytimg.com/vi/9Pq1SmUSL9o/maxresdefault.jpg" alt="" class="responsive-img z-depth-1">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" type="text" class="materialize-textarea" formControlName="descripcion"></textarea>
+        </div>
+      </div>
+      <label>Ingredientes</label>
+      <div formArrayName="ingredientes">
+        <div class="row" *ngFor="let ingredientesControl of formularioReceta.get('ingredientes').controls;let i = index"
+             [formGroupName]="i">
+          <div class="col x8 m8 l8 xl8">
+            <input type="text" formControlName="nombre" class="inputIngrediente">
+          </div>
+          <div class="col x2 m2 l2 xl2">
+            <input type="text" formControlName="cantidad" class="inputIngrediente">
+          </div>
+          <div class="col x2 m2 l2 xl2">
+            <button class="right btn btn-floating fa fa-remove botonElminarIngrediente"
+                    (click)="onEliminar(i)"></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col x8 m8 l8 xl8">
+          </div>
+          <div class="col x2 m2 l2 xl2">
+          </div>
+          <div class="col x2 m2 l2 xl2">
+            <button class="right btn btn-floating fa fa-plus botonNuevoIngrediente" (click)="onNuevoIngrediente()"
+                    type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row">
+          <button type="submit" class="btn botonGuardar" [disabled]="!formularioReceta.valid">Guardar</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn botonCancelar" (click)="limpiarYsalir()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
