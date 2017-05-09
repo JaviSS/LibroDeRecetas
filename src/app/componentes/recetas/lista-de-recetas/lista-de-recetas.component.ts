@@ -18,3 +18,4 @@ export class ListaDeRecetasComponent implements OnInit {
   }
 
 }
+
