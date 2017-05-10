@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import {Receta} from "../../receta.model";
 import {RecetaServicio} from "../../../servicios/receta.servicio";
 import {Subscription} from "rxjs/Subscription";
@@ -8,7 +8,7 @@ import {Subscription} from "rxjs/Subscription";
   templateUrl: './lista-de-recetas.component.html',
   styleUrls: ['./lista-de-recetas.component.css']
 })
-export class ListaDeRecetasComponent implements OnInit {
+export class ListaDeRecetasComponent implements OnInit, OnDestroy {
   recetas: Receta[];
 
   actualizarRecetas: Subscription;
@@ -24,6 +24,10 @@ export class ListaDeRecetasComponent implements OnInit {
           this.recetas = recetas;
         }
       );
+  }
+
+  ngOnDestroy(){
+    this.actualizarRecetas.unsubscribe();
   }
 
 }

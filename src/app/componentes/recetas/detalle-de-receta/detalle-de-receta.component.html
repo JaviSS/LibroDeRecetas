@@ -13,7 +13,7 @@
     <a class="waves-effect deep-purple lighten-2 btn"
        (click)="insertarIngredientesEnLaListaDeLaCompra()">Añadir a la lista</a>
     <a [routerLink]="['editar']" class="waves-effect deep-purple lighten-2 btn">Editar receta</a>
-    <a routerLink="" class="waves-effect red lighten-2 btn">Eliminar receta</a>
+    <a (click)="onEliminar()" class="waves-effect red lighten-2 btn">Eliminar receta</a>
   </div>
 </div>
 <div class="row">

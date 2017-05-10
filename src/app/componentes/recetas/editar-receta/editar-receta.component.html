@@ -14,12 +14,12 @@
       <div class="row">
         <div class="col x12 m12 l12 xl12">
           <label for="imagenURL">URL de la imagen</label>
-          <input id="imagenURL" type="text" formControlName="rutaImagen">
+          <input id="imagenURL" type="text" formControlName="rutaImagen" #rutaImagen>
         </div>
       </div>
       <div class="row">
         <div class="col x12 m12 l12 xl12">
-          <img src="https://i.ytimg.com/vi/9Pq1SmUSL9o/maxresdefault.jpg" alt="" class="responsive-img z-depth-1">
+          <img [src]="rutaImagen.value" alt="" class="responsive-img z-depth-1">
         </div>
       </div>
       <div class="row">
@@ -40,7 +40,7 @@
           </div>
           <div class="col x2 m2 l2 xl2">
             <button class="right btn btn-floating fa fa-remove botonElminarIngrediente"
-                    (click)="onEliminar(i)"></button>
+                    (click)="onEliminarIngrediente(i)"></button>
           </div>
         </div>
       </div>

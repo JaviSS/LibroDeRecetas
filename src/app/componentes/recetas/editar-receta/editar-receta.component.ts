@@ -86,4 +86,9 @@ export class EditarRecetaComponent implements OnInit {
       'cantidad': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
     }))
   }
+
+  onEliminarIngrediente(id:number){
+    (<FormArray>this.formularioReceta.get('ingredientes')).removeAt(id);
+  }
+
 }

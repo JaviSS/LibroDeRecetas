@@ -51,5 +51,12 @@ export class RecetaServicio {
     console.log(this.recetas);
   }
 
+  eliminarReceta(id:number){
+    this.recetas.splice(id, 1);
+    this.recetasActualizadas.next(this.recetas.slice());
+    console.log(this.recetas);
+  }
+
+
 
 }
