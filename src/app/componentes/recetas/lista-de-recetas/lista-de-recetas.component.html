@@ -8,8 +8,13 @@
       <i class="fa fa-pencil"></i>
       Nueva receta
     </a>
+    <div class="row">
+      <div class="col x12 m12 l12 xl12">
+        <input type="text" placeholder="Buscar receta" [(ngModel)]="filtro" class="buscarReceta">
+      </div>
+    </div>
     <div class="collection z-depth-2">
-      <div *ngFor="let recetaElemento of recetas; let i = index" class="collection-item row">
+      <div *ngFor="let recetaElemento of recetas | filtrar:filtro:'nombre'; let i = index" class="collection-item row">
         <app-receta [receta]="recetaElemento" [idReceta]="i"></app-receta>
       </div>
     </div>

@@ -10,14 +10,13 @@ import {RecetaServicio} from "../servicios/receta.servicio";
 })
 export class RecetasComponent implements OnInit {
 
-  recetaSeleccionada: Receta;
+  recetaSeleccionada: boolean = false;
 
   constructor(private _recetaServicio: RecetaServicio) {
   }
 
   ngOnInit() {
-
-
+    this._recetaServicio.verOeditar.subscribe((condicion:boolean)=> this.recetaSeleccionada = condicion);
   }
 
 

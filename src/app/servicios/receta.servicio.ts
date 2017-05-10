@@ -1,31 +1,28 @@
 import {Receta} from "../componentes/receta.model";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {ListaDeLaCompraServicio} from "./lista-de-la-compra.servicio";
 import {Ingrediente} from "../compartido/ingrediente.model";
 import {Subject} from "rxjs/Subject";
+import {Http, Response} from "@angular/http";
+
+import "rxjs/Rx";
+
 
 @Injectable()
 export class RecetaServicio {
 
   recetasActualizadas = new Subject<Receta[]>();
+  verOeditar = new Subject<boolean>();
 
-  recetas: Receta[] = [
-    new Receta('Hamburguesa de avestruz',
-      'ñam ñam ',
-      'http://portal.minervafoods.com/files/como_fazer_hamburguer_caseiro.jpg',
-      [{nombre: 'Carne de avestruz', cantidad: 300}, {nombre: 'Patatas fritas', cantidad: 1}]),
-    new Receta('Noodles con pollo',
-      ' Con salsa de ostras ',
-      'http://cdn.skim.gs/images/one-pot-paleo-ginger-chicken-noodles/paleo-chicken-recipe',
-      [{nombre: 'Noodles', cantidad: 250}, {nombre: 'Pollo', cantidad: 100}]),
-    new Receta('Pizza congelada',
-      'Al menos lo has intentado',
-      'https://i.ytimg.com/vi/9Pq1SmUSL9o/maxresdefault.jpg'
-      , [{nombre: 'Harina', cantidad: 300}, {nombre: 'Mezcla 4 quesos', cantidad: 400}]),
-  ];
+  recetas: Receta[]=[];
 
+  constructor(private _listaDeLaCompraService: ListaDeLaCompraServicio, private _firebaseServicio: Http) {
 
-  constructor(private _listaDeLaCompraService: ListaDeLaCompraServicio) {
+    this.cargarRecetasDesdeServidor().subscribe((recetas: Receta[]) => {
+      console.log('cargandorecetas');
+      this.recetas = recetas;
+      this.recetasActualizadas.next(this.recetas);
+    });
   }
 
   getRecetas() {
@@ -40,23 +37,36 @@ export class RecetaServicio {
     this._listaDeLaCompraService.insertarIngredientes(ingredientes);
   }
 
-  insertarReceta(receta:Receta){
+  insertarReceta(receta: Receta) {
     this.recetas.push(receta);
     this.recetasActualizadas.next(this.recetas.slice());
+    this.guardarRecetasEnServidor();
   }
 
-  actualizarReceta(id:number,receta:Receta){
+  actualizarReceta(id: number, receta: Receta) {
     this.recetas[id] = receta;
     this.recetasActualizadas.next(this.recetas.slice());
-    console.log(this.recetas);
+    this.guardarRecetasEnServidor();
   }
 
-  eliminarReceta(id:number){
+  eliminarReceta(id: number) {
     this.recetas.splice(id, 1);
     this.recetasActualizadas.next(this.recetas.slice());
-    console.log(this.recetas);
+    this.guardarRecetasEnServidor();
   }
 
+  guardarRecetasEnServidor() {
+    this._firebaseServicio.put('https://blabla-112fc.firebaseio.com/recetas.json', this.recetas).subscribe(
+      ((res) => console.log(res))
+    );
+  }
+
+  cargarRecetasDesdeServidor() {
+    return this._firebaseServicio.get('https://blabla-112fc.firebaseio.com/recetas.json')
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
 
 
 }

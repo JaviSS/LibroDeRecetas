@@ -17,6 +17,8 @@ import {AppRutasModule} from "./app-rutas.module";
 import {RecetaVaciaComponent} from "./componentes/recetas/receta-vacia/receta-vacia.component";
 import {EditarRecetaComponent} from "./componentes/recetas/editar-receta/editar-receta.component";
 import {RecetaServicio} from "./servicios/receta.servicio";
+import {RecortarTexto} from "./compartido/recortarTexto.pipe";
+import {Filtro} from "./compartido/filtrar.pipe";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {RecetaServicio} from "./servicios/receta.servicio";
     RecetaComponent,
     DropdownDirectiva,
     RecetaVaciaComponent,
-    EditarRecetaComponent
+    EditarRecetaComponent,
+    RecortarTexto,
+    Filtro
   ],
   imports: [
     BrowserModule,

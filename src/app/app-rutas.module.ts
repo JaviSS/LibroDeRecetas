@@ -13,7 +13,6 @@ const rutas: Routes = [
   {
     path: 'recetas', component: RecetasComponent,
     children: [
-      {path: '', component: RecetaVaciaComponent},
       {path: 'nuevareceta', component: EditarRecetaComponent},
       {path: ':id', component: DetalleDeRecetaComponent},
       {path: ':id/editar', component: EditarRecetaComponent}

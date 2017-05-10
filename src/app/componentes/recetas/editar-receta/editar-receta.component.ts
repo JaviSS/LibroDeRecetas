@@ -78,6 +78,8 @@ export class EditarRecetaComponent implements OnInit {
   limpiarYsalir() {
     this.formularioReceta.reset();
     this.router.navigate(['']);
+    this._recetaServicio.verOeditar.next(false);
+
   }
 
   onNuevoIngrediente() {

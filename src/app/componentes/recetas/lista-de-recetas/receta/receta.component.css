@@ -1,13 +1,21 @@
 .row{
   margin: 0;
+
+}
+.responsive-img{
+  max-width: 150px;
 }
 
 .nombreReceta{
   font-size: 20px;
   padding: 5px;
   text-align: center;
+  color: #b4a0da;
 }
 
+.descripcionReceta{
+  font-size: 13px;
+}
 
 :focus {
   outline-style: none;
