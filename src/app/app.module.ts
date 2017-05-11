@@ -21,6 +21,7 @@ import {RecortarTexto} from "./compartido/recortarTexto.pipe";
 import {Filtro} from "./compartido/filtrar.pipe";
 import { LoginComponent } from './componentes/autenticacion/login/login.component';
 import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
+import {AutenticacionServicio} from "./servicios/autenticacion.servicio";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { RegistroComponent } from './componentes/autenticacion/registro/registro
     HttpModule,
     AppRutasModule
   ],
-  providers: [ListaDeLaCompraServicio, RecetaServicio],
+  providers: [ListaDeLaCompraServicio, RecetaServicio ,AutenticacionServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule {

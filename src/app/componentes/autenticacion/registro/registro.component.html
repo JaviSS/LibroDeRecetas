@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col offset-s3 offset-m3 offset-l3 offset-xl3 x6 m6 l6 xl6">
+    <h3 class="center">Crear una nueva cuenta</h3>
+    <form (ngSubmit)="onRegistrar(f,$event)" #f="ngForm">
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="text" ngModel>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col x12 m12 l12 xl12">
+          <label for="passw">Contraseña</label>
+          <input id="passw" name="passw" type="password" ngModel>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn botonAceptar">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
