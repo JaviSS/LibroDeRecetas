@@ -22,6 +22,7 @@ export class RecetaServicio {
       console.log('cargandorecetas');
       this.recetas = recetas;
       this.recetasActualizadas.next(this.recetas);
+      //this.guardarRecetasEnServidorBK();
     });
   }
 
@@ -61,6 +62,11 @@ export class RecetaServicio {
     );
   }
 
+  guardarRecetasEnServidorBK() {
+    this._firebaseServicio.put('https://blabla-112fc.firebaseio.com/recetasbk.json', this.recetas).subscribe(
+      ((res) => console.log(res))
+    );
+  }
   cargarRecetasDesdeServidor() {
     return this._firebaseServicio.get('https://blabla-112fc.firebaseio.com/recetas.json')
       .map((res: Response) => {

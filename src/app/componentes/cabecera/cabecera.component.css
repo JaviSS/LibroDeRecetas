@@ -1,0 +1,20 @@
+a{
+  line-height: 40px;
+ vertical-align: middle;
+}
+
+i{
+  font-size: 40px;
+  line-height: 40px;
+  padding: 0px 10px;
+}
+
+a:hover{
+  color: #c59bf8;
+  background-color: #5f5074;
+}
+
+.logo{
+  font-weight: 300;
+  color: #b4a0da;
+}

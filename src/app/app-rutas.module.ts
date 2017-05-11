@@ -3,8 +3,8 @@ import {NgModule} from "@angular/core";
 import {RecetasComponent} from "app/componentes/recetas.component";
 import {ListaDeLaCompraComponent} from "./componentes/lista-de-la-compra/lista-de-la-compra.component";
 import {DetalleDeRecetaComponent} from "./componentes/recetas/detalle-de-receta/detalle-de-receta.component";
-import {RecetaVaciaComponent} from "./componentes/recetas/receta-vacia/receta-vacia.component";
 import {EditarRecetaComponent} from "./componentes/recetas/editar-receta/editar-receta.component";
+import {RegistroComponent} from "./componentes/autenticacion/registro/registro.component";
 
 
 const rutas: Routes = [
@@ -19,7 +19,8 @@ const rutas: Routes = [
     ]
   },
 
-  {path: 'listadelacompra', component: ListaDeLaCompraComponent}
+  {path: 'listadelacompra', component: ListaDeLaCompraComponent},
+  {path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({

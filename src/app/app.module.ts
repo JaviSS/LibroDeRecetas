@@ -19,6 +19,8 @@ import {EditarRecetaComponent} from "./componentes/recetas/editar-receta/editar-
 import {RecetaServicio} from "./servicios/receta.servicio";
 import {RecortarTexto} from "./compartido/recortarTexto.pipe";
 import {Filtro} from "./compartido/filtrar.pipe";
+import { LoginComponent } from './componentes/autenticacion/login/login.component';
+import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {Filtro} from "./compartido/filtrar.pipe";
     RecetaVaciaComponent,
     EditarRecetaComponent,
     RecortarTexto,
-    Filtro
+    Filtro,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
