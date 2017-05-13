@@ -16,13 +16,14 @@ export class RegistroComponent implements OnInit {
 
   onRegistrar(formulario:NgForm, evento:Event){
 
+    let ok = false;
+
     evento.preventDefault();
 
     const email = formulario.value.email;
     const passw = formulario.value.passw;
 
-    const ok = this._autenticacionService.registrarConEmail(email,passw);
-    console.log(ok);
+    this._autenticacionService.registrarConEmail(email,passw);
     if (ok){
       formulario.resetForm();
     } else {

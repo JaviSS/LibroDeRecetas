@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
-import {Receta} from "../../receta.model";
+import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Receta} from "../receta.model";
 import {RecetaServicio} from "../../../servicios/receta.servicio";
 import {Subscription} from "rxjs/Subscription";
 
@@ -18,15 +18,17 @@ export class ListaDeRecetasComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.recetas = this._recetaServicio.getRecetas();
+    console.log('---> lista de recetas ngoninit');
     this.actualizarRecetas = this._recetaServicio.recetasActualizadas
       .subscribe(
-        (recetas:Receta[]) => {
+        (recetas: Receta[]) => {
           this.recetas = recetas;
+          console.log('---> actualizar recetas resuelta');
         }
       );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.actualizarRecetas.unsubscribe();
   }
 

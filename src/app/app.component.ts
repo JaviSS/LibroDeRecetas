@@ -14,12 +14,18 @@ export class AppComponent implements OnInit {
     this.featureSelected = feature;
   }
 
-
-  ngOnInit(): void {
+  constructor(){
     firebase.initializeApp({
         apiKey: "AIzaSyClT6bgban8jIvahAL9V7DwuhhXVepVgnA",
         authDomain: "blabla-112fc.firebaseapp.com"
       }
     );
+  }
+
+
+  ngOnInit(): void {
+    console.log("----> iniciado app component service <----");
+
+
   }
 }

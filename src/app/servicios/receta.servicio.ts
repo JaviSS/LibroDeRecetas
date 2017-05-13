@@ -1,11 +1,12 @@
-import {Receta} from "../componentes/receta.model";
-import {Injectable, OnInit} from "@angular/core";
+import {Receta} from "../componentes/recetas/receta.model";
+import {Injectable} from "@angular/core";
 import {ListaDeLaCompraServicio} from "./lista-de-la-compra.servicio";
 import {Ingrediente} from "../compartido/ingrediente.model";
 import {Subject} from "rxjs/Subject";
 import {Http, Response} from "@angular/http";
 
 import "rxjs/Rx";
+import {AutenticacionServicio} from "./autenticacion.servicio";
 
 
 @Injectable()
@@ -14,17 +15,21 @@ export class RecetaServicio {
   recetasActualizadas = new Subject<Receta[]>();
   verOeditar = new Subject<boolean>();
 
-  recetas: Receta[]=[];
+  recetas: Receta[] = [];
 
-  constructor(private _listaDeLaCompraService: ListaDeLaCompraServicio, private _firebaseServicio: Http) {
 
-    this.cargarRecetasDesdeServidor().subscribe((recetas: Receta[]) => {
-      console.log('cargandorecetas');
-      this.recetas = recetas;
-      this.recetasActualizadas.next(this.recetas);
-      //this.guardarRecetasEnServidorBK();
-    });
+  constructor(private _listaDeLaCompraService: ListaDeLaCompraServicio,
+              private _firebaseServicio: Http,
+              private _autenticacionServicio: AutenticacionServicio) {
+
+    console.log('----> receta servicio constructor');
+    _autenticacionServicio.usuarioAutenticadoSub
+      .subscribe((tokenListoSub: boolean) => {
+        console.log('tokenListoSub ' + tokenListoSub);
+        if(tokenListoSub) this.cargarRecetasDesdeServidor();
+      });
   }
+
 
   getRecetas() {
     return this.recetas.slice();
@@ -57,7 +62,8 @@ export class RecetaServicio {
   }
 
   guardarRecetasEnServidor() {
-    this._firebaseServicio.put('https://blabla-112fc.firebaseio.com/recetas.json', this.recetas).subscribe(
+    this._firebaseServicio.put('https://blabla-112fc.firebaseio.com/recetas.json?auth='
+      + this._autenticacionServicio.getAutenticacionToken(), this.recetas).subscribe(
       ((res) => console.log(res))
     );
   }
@@ -67,12 +73,18 @@ export class RecetaServicio {
       ((res) => console.log(res))
     );
   }
+
   cargarRecetasDesdeServidor() {
-    return this._firebaseServicio.get('https://blabla-112fc.firebaseio.com/recetas.json')
-      .map((res: Response) => {
-        return res.json();
+    console.log('cargarRecetasDesdeServidor llamada');
+    const tk = this._autenticacionServicio.getAutenticacionToken();
+    if (!tk) return;
+    return this._firebaseServicio.get('https://blabla-112fc.firebaseio.com/recetas.json?auth='
+      + tk).toPromise()
+      .then((res: Response) => {
+        console.log(res);
+        this.recetas = res.json();
+        this.recetasActualizadas.next(this.recetas);
       });
   }
-
 
 }

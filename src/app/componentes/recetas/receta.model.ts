@@ -1,4 +1,4 @@
-import {Ingrediente} from "../compartido/ingrediente.model";
+import {Ingrediente} from "../../compartido/ingrediente.model";
 export class Receta {
   public nombre: string;
   public descripcion: string;

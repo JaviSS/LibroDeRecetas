@@ -5,7 +5,7 @@ import {HttpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
 import {CabeceraComponent} from "./componentes/cabecera/cabecera.component";
-import {RecetasComponent} from "./componentes/recetas.component";
+import {RecetasComponent} from "./componentes/recetas/recetas.component";
 import {ListaDeRecetasComponent} from "./componentes/recetas/lista-de-recetas/lista-de-recetas.component";
 import {DetalleDeRecetaComponent} from "./componentes/recetas/detalle-de-receta/detalle-de-receta.component";
 import {ListaDeLaCompraComponent} from "./componentes/lista-de-la-compra/lista-de-la-compra.component";
@@ -19,9 +19,10 @@ import {EditarRecetaComponent} from "./componentes/recetas/editar-receta/editar-
 import {RecetaServicio} from "./servicios/receta.servicio";
 import {RecortarTexto} from "./compartido/recortarTexto.pipe";
 import {Filtro} from "./compartido/filtrar.pipe";
-import { LoginComponent } from './componentes/autenticacion/login/login.component';
+import { IniciarSesionComponente } from './componentes/autenticacion/login/iniciar-sesion.componente';
 import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 import {AutenticacionServicio} from "./servicios/autenticacion.servicio";
+import {AuthGuardServicio} from "./servicios/auth-guard.servicio";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {AutenticacionServicio} from "./servicios/autenticacion.servicio";
     EditarRecetaComponent,
     RecortarTexto,
     Filtro,
-    LoginComponent,
+    IniciarSesionComponente,
     RegistroComponent
   ],
   imports: [
@@ -48,7 +49,7 @@ import {AutenticacionServicio} from "./servicios/autenticacion.servicio";
     HttpModule,
     AppRutasModule
   ],
-  providers: [ListaDeLaCompraServicio, RecetaServicio ,AutenticacionServicio],
+  providers: [ListaDeLaCompraServicio, RecetaServicio ,AutenticacionServicio, AuthGuardServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule {

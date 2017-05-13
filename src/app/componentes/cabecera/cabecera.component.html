@@ -1,14 +1,26 @@
-
 <div class="navbar-fixed">
 
   <nav>
     <div class="nav-wrapper grey darken-3 z-depth-5">
       <div class="brand-logo center logo">ke kosina? <i class="fa fa-eercast"></i></div>
       <ul class="right">
-        <li routerLinkActive="active"><a routerLink="recetas" (click)="onRecetas()"> <i class="icono fa fa-book"></i></a></li>
+        <li routerLinkActive="active"><a routerLink="recetas" (click)="onRecetas()"> <i
+          class="icono fa fa-book"></i></a></li>
         <li routerLinkActive="active"><a routerLink="listadelacompra"> <i class="icono fa fa-list"></i></a></li>
-        <li><a routerLink="/registro"><i class="icono fa fa-user-circle-o"></i></a></li>
+        <li *ngIf="!usuarioAutenticado"><a routerLink="/login"><i class="icono fa fa-user-circle-o"></i></a></li>
+        <li *ngIf="usuarioAutenticado && !urlImagenUsuario">
+          <a (click)="onCerrarSesion()">
+            <i class="icono fa fa-user-circle-o">
+            </i>
+          </a>
+        </li>
+        <li *ngIf="usuarioAutenticado && urlImagenUsuario">
+          <a (click)="onCerrarSesion()">
+            <img [src]="urlImagenUsuario" alt="" class="circle imagenUsuario icono">
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
 </div>
+

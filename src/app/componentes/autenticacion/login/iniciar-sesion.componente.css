@@ -1,0 +1,29 @@
+input{
+  height:2rem;
+
+}
+
+.row{
+  margin-bottom: 10px;
+}
+
+.botonAceptar{
+  width: 100%;
+  margin: 10px 0px;
+  background-color: #8656bf;
+
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+
+  background-color: rgba(255, 196, 194, 0.54);
+  border-bottom: 1px solid #f2807d;
+  box-shadow: 0 1px 0 0 #f2807d;
+}
+
+
+input[type=password]:focus:not([readonly]),input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #b39ddb;
+  box-shadow: 0 1px 0 0 #b39ddb;
+}
