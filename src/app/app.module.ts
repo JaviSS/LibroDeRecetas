@@ -19,10 +19,9 @@ import {EditarRecetaComponent} from "./componentes/recetas/editar-receta/editar-
 import {RecetaServicio} from "./servicios/receta.servicio";
 import {RecortarTexto} from "./compartido/recortarTexto.pipe";
 import {Filtro} from "./compartido/filtrar.pipe";
-import { IniciarSesionComponente } from './componentes/autenticacion/login/iniciar-sesion.componente';
-import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 import {AutenticacionServicio} from "./servicios/autenticacion.servicio";
 import {AuthGuardServicio} from "./servicios/auth-guard.servicio";
+import {AutenticacionModule} from "./componentes/autenticacion/autenticacion.module";
 
 @NgModule({
   declarations: [
@@ -38,18 +37,17 @@ import {AuthGuardServicio} from "./servicios/auth-guard.servicio";
     RecetaVaciaComponent,
     EditarRecetaComponent,
     RecortarTexto,
-    Filtro,
-    IniciarSesionComponente,
-    RegistroComponent
+    Filtro
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRutasModule
+    AppRutasModule,
+    AutenticacionModule
   ],
-  providers: [ListaDeLaCompraServicio, RecetaServicio ,AutenticacionServicio, AuthGuardServicio],
+  providers: [ListaDeLaCompraServicio, RecetaServicio, AutenticacionServicio, AuthGuardServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule {
