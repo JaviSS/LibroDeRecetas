@@ -7,7 +7,7 @@ import {AuthGuardServicio} from "../../servicios/auth-guard.servicio";
 
 const rutas: Routes = [
   {
-    path: 'recetas', component: RecetasComponent,
+    path: '', component: RecetasComponent,
     children: [
       {path: 'nuevareceta', component: EditarRecetaComponent, canActivate: [AuthGuardServicio]},
       {path: ':id', component: DetalleDeRecetaComponent},

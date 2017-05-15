@@ -1,16 +1,12 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {ListaDeLaCompraComponent} from "./componentes/lista-de-la-compra/lista-de-la-compra.component";
-import {RegistroComponent} from "./componentes/autenticacion/registro/registro.component";
-import {IniciarSesionComponente} from "./componentes/autenticacion/login/iniciar-sesion.componente";
+import {InicioComponent} from "./componentes/core/inicio/inicio.component";
 
 
 const rutas: Routes = [
-  {path: '', redirectTo: '/recetas', pathMatch: 'full'},
+  {path: '', component: InicioComponent},
+  {path: 'recetas', loadChildren: './componentes/recetas/recetas.module#RecetasModule'},
 
-  {path: 'listadelacompra', component: ListaDeLaCompraComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'login', component: IniciarSesionComponente}
 ];
 
 @NgModule({

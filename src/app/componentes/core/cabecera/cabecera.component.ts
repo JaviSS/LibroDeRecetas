@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {RecetaServicio} from "../../servicios/receta.servicio";
-import {AutenticacionServicio} from "../../servicios/autenticacion.servicio";
+import {RecetaServicio} from "../../../servicios/receta.servicio";
+import {AutenticacionServicio} from "../../../servicios/autenticacion.servicio";
 
 
 @Component({
